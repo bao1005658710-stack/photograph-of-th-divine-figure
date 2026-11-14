@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8d51d" />
+    <title>帅气档案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="日常片段首页">
+          <span class="brand-mark">★</span>
+          <span>帅气档案</span>
+        </a>
+        <p class="date-chip" id="today"></p>
+        <a class="upload-button" href="#publish">发布相册 ↗</a>
+      </header>
+
+      <section class="intro" id="top">
+        <p class="eyebrow">THE PERSONAL HERO FILES · ISSUE 01</p>
+        <p class="action-word action-one">POW!</p>
+        <h1>帅气时刻，<br /><em>必须出场。</em></h1>
+        <p class="intro-copy">不必等聚光灯。每一张照片，都是属于你的主角镜头。</p>
+        <div class="intro-actions">
+          <a class="round-button" href="#publish">准备发布我的战照 <span>↗</span></a>
+          <a href="#gallery" class="text-link">进入英雄档案 <span>↓</span></a>
+        </div>
+      </section>
+
+      <section class="memory-strip" aria-label="今日状态">
+        <p>今日状态</p>
+        <span class="line"></span>
+        <p id="smallThing">主角光环 · FULL POWER</p>
+        <span class="sun">✹</span>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE WALL OF FAME</p>
+            <h2>我的高光时刻</h2>
+          </div>
+          <p class="count" id="photoCount">0 张照片</p>
+        </div>
+
+        <div class="drop-zone bundle-note">
+          <div class="drop-icon">＋</div>
+          <div>
+            <strong>把战照装进网站</strong>
+            <p>放入 photos 文件夹，运行“更新相册.bat”，再发布整个文件夹</p>
+          </div>
+        </div>
+
+        <div class="gallery" id="photoGrid" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState">
+          <span>⌁</span>
+          <p>还没有战照<br />下一张，就是你的封面。</p>
+        </div>
+      </section>
+
+      <section class="publish-panel" id="publish">
+        <p class="eyebrow">PUBLISH CHECKLIST</p>
+        <h2>三步，让所有人看到。</h2>
+        <div class="publish-steps">
+          <article><b>01</b><p>把照片复制到<br /><code>photos</code> 文件夹</p></article>
+          <article><b>02</b><p>双击运行<br /><code>更新相册.bat</code></p></article>
+          <article><b>03</b><p>把整个网站文件夹<br />发布到 GitHub Pages 或 Netlify</p></article>
+        </div>
+        <p class="publish-note">发布前请确认：放入 photos 的每张照片都会被公开访问。</p>
+      </section>
+    </main>
+
+    <dialog id="photoDialog" class="photo-dialog">
+      <button class="dialog-close" id="closeDialog" aria-label="关闭">×</button>
+      <img id="dialogImage" alt="放大的个人照片" />
+      <div class="dialog-caption">
+        <p id="dialogDate"></p>
+        <span class="archive-mark">PUBLIC HERO FILE</span>
+      </div>
+    </dialog>
+
+    <footer>STARRING YOU · NO CAPES REQUIRED</footer>
+    <script src="gallery-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
