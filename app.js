@@ -1,58 +1,49 @@
 const grid = document.querySelector('#photoGrid');
-const emptyState = document.querySelector('#emptyState');
 const photoCount = document.querySelector('#photoCount');
-const dialog = document.querySelector('#photoDialog');
-const dialogImage = document.querySelector('#dialogImage');
-const dialogDate = document.querySelector('#dialogDate');
+const reservedPhotos = new Set([
+  'photos/微信图片_20261114145832_64_2.jpg',
+  'photos/微信图片_20261114145837_69_2.jpg',
+  'photos/微信图片_20261114145753_60_2.jpg',
+  'photos/微信图片_20261114145754_61_2.jpg'
+]);
 
-function todayText() {
-  const now = new Date();
-  const weekday = ['日', '一', '二', '三', '四', '五', '六'][now.getDay()];
-  return `${now.getFullYear()} 年 ${now.getMonth() + 1} 月 ${now.getDate()} 日 · 周${weekday}`;
-}
-document.querySelector('#today').textContent = todayText();
+const photoSizes = {
+  'photos/微信图片_20261114145746_54_2.jpg': [1280, 1707],
+  'photos/微信图片_20261114145747_55_2.jpg': [1080, 1440],
+  'photos/微信图片_20261114145747_56_2.jpg': [1080, 1202],
+  'photos/微信图片_20261114145748_57_2.jpg': [810, 1080],
+  'photos/微信图片_20261114145752_59_2.jpg': [828, 1792],
+  'photos/微信图片_20261114145754_62_2.jpg': [1280, 720],
+  'photos/微信图片_20261114145836_68_2.jpg': [1260, 840],
+  'photos/微信图片_20261114145835_67_2.jpg': [1080, 1440],
+  'photos/微信图片_20261114145834_66_2.jpg': [958, 2082],
+  'photos/微信图片_20261114145757_63_2.jpg': [1706, 1279],
+  'photos/微信图片_20261114145833_65_2.jpg': [375, 899]
+};
 
-function prettyDate(value) {
-  if (!value) return 'HERO FILE';
-  const date = new Date(`${value}T12:00:00`);
-  return Number.isNaN(date) ? 'HERO FILE' : new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
-}
-
-function addCard(photo, index) {
-  const figure = document.createElement('figure');
-  figure.className = `photo-card panel-${Number.isInteger(photo.panel) ? photo.panel % 9 : index % 9}`;
-  figure.dataset.date = prettyDate(photo.date);
+function makePhoto(photo) {
   const image = document.createElement('img');
+  image.className = 'gallery-photo';
   image.src = photo.src;
-  image.alt = photo.alt || `个人照片，${prettyDate(photo.date)}`;
-  image.loading = 'lazy';
-  const visual = document.createElement('div');
-  visual.className = 'photo-visual';
-  visual.append(image);
-  const frameNumber = document.createElement('span');
-  frameNumber.className = 'frame-number';
-  frameNumber.textContent = `#${String(index + 1).padStart(2, '0')}`;
-  const caption = document.createElement('figcaption');
-  caption.textContent = photo.caption || '这一格，帅得有点不讲道理。';
-  figure.append(visual, frameNumber, caption);
-  figure.addEventListener('click', () => openPhoto(photo));
-  grid.append(figure);
-}
+  image.alt = photo.alt || '个人生活照片';
+  image.setAttribute('loading', 'lazy');
+  image.setAttribute('decoding', 'async');
+  const [width, height] = photoSizes[photo.src] || [1200, 1200];
+  image.width = width;
+  image.height = height;
+  image.dataset.source = 'client';
+  image.dataset.subject = 'portrait';
 
-function openPhoto(photo) {
-  dialogImage.src = photo.src;
-  dialogImage.alt = photo.alt || '放大的个人照片';
-  dialogDate.textContent = prettyDate(photo.date);
-  dialog.showModal();
+  return image;
 }
 
 function loadPhotos() {
   const photos = Array.isArray(window.SHARED_PHOTOS) ? window.SHARED_PHOTOS : [];
-  grid.replaceChildren();
-  photos.forEach(addCard);
-  emptyState.hidden = photos.length > 0;
-  photoCount.textContent = `${photos.length} 张战照`;
+  const galleryPhotos = photos.filter((photo) => !reservedPhotos.has(photo.src));
+  const fragment = document.createDocumentFragment();
+  galleryPhotos.forEach((photo) => fragment.append(makePhoto(photo)));
+  grid.replaceChildren(fragment);
+  photoCount.textContent = `${photos.length} 张照片`;
 }
 
-document.querySelector('#closeDialog').addEventListener('click', () => dialog.close());
 loadPhotos();
