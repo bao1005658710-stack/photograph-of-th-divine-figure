@@ -46,4 +46,30 @@ function loadPhotos() {
   photoCount.textContent = `${photos.length} 张照片`;
 }
 
+function mountCursorGlow() {
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!finePointer.matches || reducedMotion.matches) return;
+
+  document.querySelectorAll('[data-cursor-glow]').forEach((panel) => {
+    let frame = 0;
+    panel.addEventListener('pointermove', (event) => {
+      const bounds = panel.getBoundingClientRect();
+      const x = event.clientX - bounds.left;
+      const y = event.clientY - bounds.top;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        panel.style.setProperty('--glow-x', `${x}px`);
+        panel.style.setProperty('--glow-y', `${y}px`);
+      });
+    }, { passive: true });
+    panel.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(frame);
+      panel.style.setProperty('--glow-x', '50%');
+      panel.style.setProperty('--glow-y', '50%');
+    });
+  });
+}
+
 loadPhotos();
+mountCursorGlow();
