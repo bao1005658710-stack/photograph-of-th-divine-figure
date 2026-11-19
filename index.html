@@ -1,129 +1,95 @@
 <!doctype html>
-<html lang="zh-CN" data-type="service" data-radius="sharp" data-buttons="solid" data-motion data-tone="dark">
+<html lang="zh-CN" data-type="service">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>帅气档案：个人照片影集</title>
-  <meta name="description" content="16 张公开个人照片组成的冷酷暗黑风格影集。">
-  <meta name="site-kind" content="other">
-  <meta name="page-type" content="service">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="帅气档案：个人照片影集">
-  <meta property="og:description" content="16 张公开个人照片，记录无需解释的日常状态。">
-  <meta property="og:image" content="https://bao1005658710-stack.github.io/photograph-of-th-divine-figure/share.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#08090b">
-  <link rel="canonical" href="https://bao1005658710-stack.github.io/photograph-of-th-divine-figure/">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=Libre+Franklin:wght@400..600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/system.css">
-  <link rel="stylesheet" href="assets/motion/motion.css">
-  <link rel="stylesheet" href="assets/layout/layout.css">
-  <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
-  <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
-  <link rel="modulepreload" href="assets/moments/moments.js">
-  <link rel="modulepreload" href="assets/moments/lib.js">
-  <link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090a">
+<meta name="description" content="夜幕档案，一间由你整理的本地人像照片档案。">
+<meta property="og:title" content="夜幕档案 · Nocturne">
+<meta property="og:description" content="一间由你整理的本地人像照片档案。">
+<meta property="og:image" content="https://bao1005658710-stack.github.io/photograph-of-th-divine-figure/photos/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261114145747_56_2.jpg">
+<link rel="canonical" href="https://bao1005658710-stack.github.io/photograph-of-th-divine-figure/">
+<meta name="page-type" content="service">
+<meta name="site-kind" content="other">
+<title>夜幕档案 · Nocturne</title>
+<link rel="stylesheet" href="style.css">
+<script src="portrait-library.js" defer></script>
+<script src="gallery.js" defer></script>
 </head>
-<body>
-  <header class="nav nav--centre">
-    <div class="wrap nav__bar">
-      <a class="skip-link" href="#top">跳到主要内容</a>
-      <a class="nav__logo" href="#top" aria-label="帅气档案首页"><span class="brand-stack" aria-hidden="true"><i></i><i></i><i></i></span>帅气档案</a>
-      <nav class="nav__links" aria-label="主导航">
-        <div class="nav__item"><a class="nav__link" href="#top">首页</a></div>
-        <div class="nav__item"><a class="nav__link" href="#archive">精选</a></div>
-        <div class="nav__item"><a class="nav__link" href="#statement">宣言</a></div>
-        <div class="nav__item"><a class="nav__link" href="#gallery">影集</a></div>
-      </nav>
-      <div class="nav__actions"><a class="btn btn--primary" href="#gallery">浏览影集</a></div>
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="打开菜单"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+<body id="top">
+<a class="skip" href="#gallery">跳到照片</a>
+<header class="mast">
+  <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><span>NOCTURNE</span></a>
+  <nav aria-label="主导航"><a href="#gallery">人像</a><a href="#albums">相册</a></nav>
+  <button class="motion-switch" type="button" aria-pressed="false" title="暂停背景动效"><span aria-hidden="true"></span><b>动态</b></button>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title" data-enter>
+    <div class="hero-frame">
+      <img class="cover" src="photos/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261114145747_56_2.jpg" alt="" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <canvas id="dust" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> NOCTURNE / 人像档案</p>
+        <h1 id="hero-title"><span>每一帧，</span><span>都是你。</span></h1>
+        <p class="hero-note">一间留给你的私人影集。<br>收好那些值得再看一眼的瞬间。</p>
+        <button class="enter upload-trigger" type="button">上传人像 <span aria-hidden="true">＋</span></button>
+      </div>
+      <span class="frame-corner" aria-hidden="true"></span>
     </div>
-  </header>
+    <div class="hero-bottom"><span>THE PORTRAIT ARCHIVE</span><a href="#gallery">浏览人像 <span aria-hidden="true">↓</span></a></div>
+  </section>
 
-  <main id="top">
-    <section class="hero hero--split" data-enter aria-labelledby="hero-h">
-      <div class="wrap">
-        <div class="hero-text grid hero__grid">
-          <div class="hero__text span-5">
-            <p class="hero__kicker"><span class="status-dot" aria-hidden="true"></span>公开影集 · 16 帧</p>
-            <h1 id="hero-h"><span>个人照片</span><span class="hero-title-outline">档案</span></h1>
-            <p class="hero__lead">16 张真实日常照片，记录镜头前不必解释的状态。</p>
-            <div class="btn-row">
-              <a class="btn btn--primary" href="#gallery">浏览影集<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-              <a class="btn btn--secondary" href="#statement">观看宣言</a>
-            </div>
-          </div>
-          <div class="hero__media span-6 start-7">
-            <img src="photos/微信图片_20261114145832_64_2.jpg" alt="佩戴多枚奖牌的个人照片" width="1440" height="960" fetchpriority="high" data-source="client" data-subject="portrait">
-            <div class="ly-float" data-cursor-glow aria-label="相册信息">
-              <div class="ly-float__row"><span class="live-mark">档案 01</span><span>公开</span></div>
-              <div class="ly-float__title">16 帧 · 真实日常</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section selected" id="archive" aria-labelledby="archive-h">
-      <div class="wrap">
-        <div class="section-head selected__head">
-          <p class="section-index">01 / 精选画面</p>
-          <h2 id="archive-h"><span>不需要摆拍。</span><span class="outline-line">状态自然会出现。</span></h2>
-        </div>
-        <div class="selected__grid">
-          <div class="selected__portrait"><img src="photos/微信图片_20261114145837_69_2.jpg" alt="红色背景前的个人照片" width="720" height="962" loading="lazy" decoding="async" data-source="client" data-subject="portrait"></div>
-          <div class="selected__portrait"><img src="photos/微信图片_20261114145753_60_2.jpg" alt="两人穿正装的户外自拍" width="1279" height="1706" loading="lazy" decoding="async" data-source="client" data-subject="portrait"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section statement" id="statement" data-moment="word-highlight" aria-labelledby="statement-h">
-      <div class="wrap">
-        <p class="section-index">02 / 影像宣言</p>
-        <h2 id="statement-h" class="sr-only">影像宣言</h2>
-        <p class="mo-wh__text">无需介绍。镜头已经把<strong>答案</strong>留下。</p>
-      </div>
-    </section>
-
-    <section class="section gallery-section" id="gallery" style="--h: 2; --hm: 2" aria-labelledby="gallery-h">
-      <div class="wrap">
-        <div class="section-head gallery-head">
-          <div>
-            <p class="section-index">03 / 完整影集</p>
-            <h2 id="gallery-h">其余画面，全部在场。</h2>
-          </div>
-          <p class="gallery-count" id="photoCount">16 张照片</p>
-        </div>
-        <div class="gallery-grid" id="photoGrid" aria-label="个人照片网格"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer closing" id="close" aria-labelledby="close-h">
-    <div class="wrap">
-      <div class="closing__cta close--photo grid">
-        <div class="close-copy span-5">
-          <p class="section-index">最后一帧</p>
-          <h2 id="close-h">看完了。气场还在。</h2>
-          <a class="btn btn--primary btn--xl" href="#top">回到开场<svg class="m-arrow m-arrow--up" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-        </div>
-        <div class="close__media close-photo span-6 start-7"><img src="photos/微信图片_20261114145754_61_2.jpg" alt="户外合影" width="1080" height="2400" loading="lazy" decoding="async" data-source="client" data-subject="portrait"></div>
-      </div>
-      <div class="closing__links footer-grid">
-        <a class="nav__logo" href="#top"><span class="brand-stack" aria-hidden="true"><i></i><i></i><i></i></span>帅气档案</a>
-        <nav aria-label="页脚导航"><a href="#archive">精选</a><a href="#statement">宣言</a><a href="#gallery">影集</a></nav>
-        <div class="footer__legal"><span>© 2026 帅气档案</span><span>照片由网站所有者提供</span></div>
-      </div>
+  <section class="manifesto wrap" id="moments" aria-labelledby="manifesto-title">
+    <div class="manifesto-copy">
+      <p class="eyebrow"><span></span> 日常存档</p>
+      <h2 id="manifesto-title"><span>神人时刻。</span><span>泡面日常。</span></h2>
+      <p>热气还在，快门刚好落下。</p>
     </div>
-  </footer>
+  </section>
 
-  <script src="gallery-data.js"></script>
-  <script src="app.js"></script>
-  <script type="module" src="assets/system.js"></script>
-  <script type="module" src="assets/motion/motion.js"></script>
+  <section class="gallery wrap" id="gallery" aria-labelledby="gallery-title">
+    <div class="section-head">
+      <div><p class="eyebrow"><span></span> YOUR PORTRAITS</p><h2 id="gallery-title">你的人像</h2></div>
+      <span id="total" class="section-count" aria-live="polite"></span>
+    </div>
+    <div class="gallery-tools"><p id="library-message" role="status">正在读取本地相册…</p><button class="compact upload-trigger" type="button">上传照片 <span aria-hidden="true">＋</span></button></div>
+    <div id="empty-library" class="empty-library" hidden><h3>从第一张开始。</h3><p>可一次选择多张照片，也可以把照片拖到这里。</p><button class="enter upload-trigger" type="button">选择照片 <span aria-hidden="true">＋</span></button></div>
+    <div class="filters" id="filters" aria-label="筛选相册" role="group"></div>
+    <div class="grid" id="photo-grid"></div>
+    <div class="gallery-end" id="load-point"><button id="load-more" type="button">加载更多</button><p id="end-note" hidden>已浏览完此相册</p></div>
+  </section>
+
+  <section class="albums wrap" id="albums" aria-labelledby="albums-title">
+    <div class="section-head"><div><p class="eyebrow"><span></span> ALBUMS</p><h2 id="albums-title">分类相册</h2></div></div>
+    <div class="album-grid" id="album-grid"></div><p class="no-album" id="no-album">上传时填写相册名称，就能在这里找到它。</p>
+  </section>
+</main>
+<footer class="footer wrap"><a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><span>NOCTURNE</span></a><a class="back" href="#top">返回顶部 <span aria-hidden="true">↑</span></a></footer>
+
+<dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+  <div class="viewer-head"><span id="viewer-index"></span><button id="close-viewer" class="icon-button" type="button" aria-label="关闭照片">×</button></div>
+  <div class="viewer-stage">
+    <button id="prev-photo" class="icon-button" type="button" aria-label="上一张">‹</button>
+    <img id="viewer-image" alt="">
+    <button id="next-photo" class="icon-button" type="button" aria-label="下一张">›</button>
+  </div>
+  <div class="viewer-foot" aria-live="polite"><h2 id="viewer-title"></h2><div class="viewer-actions"><p id="viewer-album"></p><span id="viewer-error" role="status"></span><button id="delete-photo" class="compact" type="button">移除照片</button></div></div>
+</dialog>
+<dialog id="upload" class="upload-modal" aria-labelledby="upload-title">
+  <form id="upload-form">
+    <div class="upload-heading"><h2 id="upload-title">上传人像</h2><button id="close-upload" class="icon-button" type="button" aria-label="关闭上传窗口">×</button></div>
+    <label class="field">照片
+      <input id="photo-files" type="file" accept="image/*" multiple>
+    </label>
+    <p id="selection" class="upload-hint">可选择多张图片。导入的照片只保存在当前浏览器。</p>
+    <label class="field">相册名称
+      <input id="album-input" type="text" value="人像" list="album-options" maxlength="40" required>
+      <datalist id="album-options"></datalist>
+    </label>
+    <p id="upload-status" class="upload-hint" role="status"></p>
+    <button id="save-photos" class="enter" type="submit">保存到相册 <span aria-hidden="true">＋</span></button>
+  </form>
+</dialog>
 </body>
 </html>
